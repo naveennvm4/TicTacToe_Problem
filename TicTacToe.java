@@ -25,9 +25,18 @@ public class TicTacToe {
 		}
 		System.out.println("Player is " + player + " and Computer is " + computer);
 	}
+	public static void showBoard() {
+		System.out.println("  |  |  ");
+		System.out.println("--------");
+		System.out.println("  |  |  ");
+		System.out.println("--------");
+		System.out.println("  |  |  ");
+	}
+
 	public static void main(String args[]) {
 		System.out.println("Welcome to TicTacToeGame");
 		board();
 		entry();
+		showBoard();
  	}
 }
