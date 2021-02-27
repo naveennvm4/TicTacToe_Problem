@@ -14,7 +14,7 @@ public class TicTacToe {
 	public char entry() {
 		char player, computer;
 		Scanner input = new Scanner(System.in);
-		System.out.println("Enter x for chhosing cross and enter o for choosing circle");
+		System.out.println("Enter X or O to enter a value into cells");
 		char selection = input.next().charAt(0);
 		if (selection == 'x') {
 			player = 'x';
@@ -41,7 +41,7 @@ public class TicTacToe {
 		int user_input = input.nextInt();
 		if (user_input < 10 && user_input > 0) {
 			if (board[user_input] == ' ') {
-				System.out.println("Place is available");
+				board[user_input] = player;
 			}
 			else
 				System.out.println("Place is already taken");
@@ -51,7 +51,7 @@ public class TicTacToe {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to tictactoe game");
+		System.out.println("Welcome to TicTacToe game");
 		TicTacToe game = new TicTacToe();
 		char[] board = game.board();
 		char player = game.entry();
