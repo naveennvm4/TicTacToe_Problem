@@ -50,6 +50,14 @@ public class TicTacToe {
 			System.out.println("Invalid Input");
 	}
 
+	public void firstChance() {
+		double toss = Math.floor(Math.random() * 10 ) % 2;
+		if ((int)toss == 0)
+			System.out.println("Player won the toss");
+		else
+			System.out.println("Computer won the toss");
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to TicTacToe game");
 		TicTacToe game = new TicTacToe();
@@ -57,5 +65,7 @@ public class TicTacToe {
 		char player = game.entry();
 		game.showBoard(board);
 		game.userInput(board, player);
+		game.showBoard(board);
+		game.firstChance();
 	}
 }
