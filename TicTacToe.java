@@ -1,7 +1,9 @@
 package package1;
+
 import java.util.Scanner;
 
 public class TicTacToe {
+	
 	public char[] gameBoard() {
 		char[] board = new char[10];
 		for(int index = 1; index < board.length; index++) {
@@ -9,14 +11,14 @@ public class TicTacToe {
 		}
 		return board;
 	}
-
+	
 	public char entry() {
 		Scanner input = new Scanner(System.in);
-		System.out.println("Enter x or O to choose a input");
+		System.out.println("Enter x or O to choose an input");
 		char selection = input.next().charAt(0);
 		return selection;
 	}
-
+	
 	public void showBoard(char[] board) {
 		System.out.println(board[7] + "  | " + board[8] + " | " + board[9]);
 		System.out.println("--------------");
@@ -24,7 +26,7 @@ public class TicTacToe {
 		System.out.println("--------------");
 		System.out.println(board[1] + "  | " + board[2] + " | " + board[3]);
 	}
-
+	
 	public char[] userInput(char[] board, char player) {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter a number from 1 to 9");
@@ -40,7 +42,7 @@ public class TicTacToe {
 			System.out.println("Invalid Input");
 		return board;
 	}
-
+	
 	public int firstChance() {
 		double toss = Math.floor(Math.random() * 10 ) % 2;
 		if ((int)toss == 0) {
@@ -51,7 +53,7 @@ public class TicTacToe {
 			return 0;
 		}
 	}
-
+	
 	public char[] computerPlay(char[] board, char computer) {
 		boolean check = true;
 		while (check == true) {
@@ -83,7 +85,7 @@ public class TicTacToe {
 				board[4] = computer;
 				check = false;
 			}
-			else if ((board[4] == board[6] && board[6] == computer && board[5] == ' ') ||
+			else if ((board[4] == board[6] && board[6] == computer && board[5] == ' ') || 
 					(board[2] == board[8] && board[8] == computer && board[5] == ' ') || 
 					(board[1] == board[9] && board[9] == computer && board[5] == ' ') || 
 					(board[3] == board[7] && board[7] == computer && board[5] == ' ')) {
@@ -102,8 +104,59 @@ public class TicTacToe {
 				check = false;
 			}
 			else if ((board[8] == board[9] && board[9] == computer && board[7] == ' ') || 
-					(board[1] == board[4] && board[4] == computer && board[7] == ' ') ||
+					(board[1] == board[4] && board[4] == computer && board[7] == ' ') || 
 					(board[3] == board[5] && board[5] == computer && board[7] == ' ')) {
+				board[7] = computer;
+				check = false;
+			}
+			else if ((board[1] == board[2] && board[2] != ' ' && board[3] == ' ') || 
+					(board[6] == board[9] && board[9] != ' ' && board[3] == ' ') || 
+					(board[5] == board[7] && board[7] != ' ' && board[3] == ' ')) {
+				board[3] = computer;
+				check = false;
+			}
+			else if ((board[1] == board[3] && board[3] != ' ' && board[2] == ' ') || 
+					(board[5] == board[8] && board[8] != ' ' && board[2] == ' ')) {
+				board[2] = computer;
+				check = false;
+			}
+			else if ((board[2] == board[3] && board[2] != ' ' && board[1] == ' ') || 
+					(board[4] == board[7] && board[7] != ' ' && board[1] == ' ') || 
+					(board[5] == board[9] && board[9] != ' ' && board[1] == ' ')) {
+				board[1] = computer;
+				check = false;
+			}
+			else if ((board[4] == board[5] && board[5] != ' ' && board[6] == ' ') || 
+					(board[3] == board[9] && board[9] != ' ' && board[6] == ' ')) {
+				board[6] = computer;
+				check = false;
+			}
+			else if ((board[5] == board[6] && board[6] != ' ' && board[4] == ' ') || 
+					(board[1] == board[7] && board[7] != ' ' && board[4] == ' ')) {
+				board[4] = computer;
+				check = false;
+			}
+			else if ((board[4] == board[6] && board[6] != ' ' && board[5] == ' ') || 
+					(board[2] == board[8] && board[8] != ' ' && board[5] == ' ') || 
+					(board[1] == board[9] && board[9] != ' ' && board[5] == ' ') || 
+					(board[3] == board[7] && board[7] != ' ' && board[5] == ' ')) {
+				board[5] = computer;
+				check = false;
+			}
+			else if ((board[7] == board[8] && board[8] != ' ' && board[9] == ' ') || 
+					(board[3] == board[6] && board[6] != ' ' && board[9] == ' ') || 
+					(board[1] == board[5] && board[5] != ' ' && board[9] == ' ')) {
+				board[9] = computer;
+				check = false;
+			}
+			else if ((board[7] == board[9] && board[9] != ' ' && board[8] == ' ') || 
+					(board[2] == board[5] && board[5] != ' ' && board[8] == ' ')) {
+				board[8] = computer;
+				check = false;
+			}
+			else if ((board[8] == board[9] && board[9] != ' ' && board[7] == ' ') || 
+					(board[1] == board[4] && board[4] != ' ' && board[7] == ' ') || 
+					(board[3] == board[5] && board[5] != ' ' && board[7] == ' ')) {
 				board[7] = computer;
 				check = false;
 			}
@@ -114,21 +167,21 @@ public class TicTacToe {
 		}
 		return board;
 	}
-
+	
 	public int winTie(char[] board) {
 		int result = 0;
-		if ((board[1] == board[2] && board[3] == board[1] && board[3] != ' ')|| 
-			(board[4] == board[5] && board[4] == board[6] && board[4] != ' ') ||
-			(board[7] == board[8] && board[8] == board[9] && board[8] != ' ') || 
-			(board[1] == board[4] && board[1] == board[7] && board[1] != ' ') || 
-			(board[2] == board[5] && board[8] == board[5] && board[8] != ' ') || 
-			(board[3] == board[6] && board[9] == board[6] && board[6] != ' ') || 
-			(board[1] == board[5] && board[9] == board[5] && board[9] != ' ') || 
-			(board[3] == board[5] && board[5] == board[7] && board[5] != ' '))
+		if ((board[1] == board[2] && board[3] == board[1] && board[3] != ' ') || 
+				(board[4] == board[5] && board[4] == board[6] && board[4] != ' ') || 
+				(board[7] == board[8] && board[8] == board[9] && board[8] != ' ') || 
+				(board[1] == board[4] && board[1] == board[7] && board[1] != ' ') || 
+				(board[2] == board[5] && board[8] == board[5] && board[8] != ' ') || 
+				(board[3] == board[6] && board[9] == board[6] && board[6] != ' ') || 
+				(board[1] == board[5] && board[9] == board[5] && board[9] != ' ') || 
+				(board[3] == board[5] && board[5] == board[7] && board[5] != ' '))
 			result = 1;
 		else {
 			int empty = 0; 
-			for (int index = 1; index < board.length; index++) {
+			for (int index = 1; index < board.length; index++) { 
 				if (board[index] == ' ') {
 					empty = 1; 
 				}
@@ -141,7 +194,7 @@ public class TicTacToe {
 		}
 		return result;
 	}
-
+	
 	public void gamePlay(char player, char computer, char[] board, int chance, TicTacToe game) {
 		int result;
 		boolean check = true;
@@ -151,40 +204,39 @@ public class TicTacToe {
 					board = game.userInput(board, player);
 					switch(game.winTie(board)) {
 						case 0:
-							System.out.println("The game Tied");
+							System.out.println("The game is a Tie");
 							check = false;
 							break;
 						case 1: 
-							System.out.println("Player won");
+							System.out.println("Player is the winner");
 							check = false;
 							break;
 						default:
-							System.out.println("Computer has to play");
+							System.out.println("Computer's chance to play");
 							game.showBoard(board);
-							chance = 0;// changes the turn to computer
+							chance = 0;
 					}
 					break;
 				case 0:
 					board = game.computerPlay(board, computer);
 					switch(game.winTie(board)) {
 					case 0:
-							System.out.println("The game Tied");
+							System.out.println("The game is a Tie");
 							check = false;
 							break;
 					case 1:
-							System.out.println("Computer won");
+							System.out.println("Computer is the winner");
 							check = false;
 							break;
 					default:
-							System.out.println("Player has to play");
+							System.out.println("Player's chance to play");
 							game.showBoard(board);
-							chance = 1;// changes the turn to player
+							chance = 1;
 					}
 					break;
 			}
 		}
 	}
-
 	public static void main(String[] args) {
 		char value = 'x',computer;
 		System.out.println("Welcome to tictactoe game");
