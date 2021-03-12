@@ -233,5 +233,6 @@ public class TicTacToe {
 		int chance = game.firstChance();
 		game.gamePlay(player, computer, board, chance, game);
 		game.showBoard(board);
+		System.out.println("GAME OVER");
 	}
 }
