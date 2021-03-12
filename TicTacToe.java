@@ -130,6 +130,9 @@ public class TicTacToe {
 				board[7] = computer;
 			else if (board[9] == ' ')
 				board[9] = computer;
+			//Taking center place
+			else if (board[5] == ' ')
+				board[5] = computer;
 			else {// if there is a space left then the place would be taken by computer
 				boolean check = true;
 				while (check == true) {
