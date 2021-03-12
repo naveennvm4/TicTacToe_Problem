@@ -173,7 +173,7 @@ public class TicTacToe {
 		}
 		return result;
 	}
-	public void gamePlay(char player, char computer, char[] board, int chance, TicTacToe game) {
+	public void gamePlay(char player, char computer, char[] board, int chance, TicTacToe game, scanner sc) {
 		int result;
 		boolean check = true;
 		while(check == true) {
@@ -215,24 +215,35 @@ public class TicTacToe {
 			}
 		}
 	}
-	public static void main(String[] args) {
+	public static void playAgain(Scanner sc) {
 		char value = 'x',computer;
-		System.out.println("Welcome to tictactoe game");
-		TicTacToe game = new TicTacToe();
-		char[] board = game.gameBoard();
-		char player = game.entry();
-		int compare = Character.compare(player, value);
-		if (compare == 0) {
-			player = 'x';
-			computer = 'o';
-		} else {
-			player = 'o';
-			computer = 'x';
+		boolean bool = true;
+		while (bool == true) {
+			System.out.println("Welcome to tictactoe game");
+			TicTacToe game = new TicTacToe();
+			char[] board = game.gameBoard();
+			char player = game.entry();
+			int compare = Character.compare(player, value);
+			if (compare == 0) {
+				player = 'x';
+				computer = 'o';
+			} else {
+				player = 'o';
+				computer = 'x';
+			}
+			game.showBoard(board);
+			int chance = game.firstChance();
+			game.gamePlay(player, computer, board, chance, game, sc);
+			game.showBoard(board);
+			System.out.println("GAME OVER");
+			System.out.println("if you want to play again press 1");
+			int playNoPlay = sc.nextInt();
+			if (playNoPlay != 1)
+				bool = false;
 		}
-		game.showBoard(board);
-		int chance = game.firstChance();
-		game.gamePlay(player, computer, board, chance, game);
-		game.showBoard(board);
-		System.out.println("GAME OVER");
+	}
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		playAgain(sc);
 	}
 }
